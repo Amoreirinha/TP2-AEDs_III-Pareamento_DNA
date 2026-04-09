@@ -8,7 +8,7 @@
       <li>Victoria Almeida Tambasco</li>
       <li>Murilo Antonio da Silva</li>
       <li>Luiz Gabriel da Silva Cabrera</li>
-      <li>Luiz Fernando</li>
+      <li>Luiz Fernando Ferreira Cabral</li>
     </ul>
     <p><i>Trabalho desenvolvido em grupo conforme as diretrizes da disciplina.</i></p>
   </section>
