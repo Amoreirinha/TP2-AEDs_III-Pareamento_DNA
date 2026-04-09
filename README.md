@@ -5,7 +5,7 @@
     <h2>👥 Autores:</h2>
     <ul type="none">
       <li>Joaquim Pedro do Nascimento Moreira de Jesus</li>
-      <li>Victoria Almeida Tambasco</li>
+      <li>Victória Almeida Tambasco</li>
       <li>Murilo Antonio da Silva</li>
       <li>Luiz Gabriel da Silva Cabrera</li>
       <li>Luiz Fernando Ferreira Cabral</li>
