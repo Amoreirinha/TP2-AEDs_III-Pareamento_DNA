@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
+#include <stdio.h>
 
 /* Preencher os campos abaixo
 Participantes do grupo
@@ -32,8 +34,10 @@ long int programacao_dinamica(char *s1, char *s2) {
     // Alocamos (n+1) * (m+1) posições de inteiros
     int *matriz = malloc((n + 1) * (m + 1) * sizeof(int));
 
-    if (matriz == NULL) return NULL; // Tratamento de erro
-
+    if (matriz == NULL) {
+        printf("Erro - Prog. Dinâmica\n");
+        return INT_MIN; // Tratamento de erro
+    }
     // 3. Preenchendo primeira LINHA (Horizontal)
     // Representa o alinhamento de s2 com uma string vazia.
     // Índices: 0, 1, 2, ..., m
@@ -89,12 +93,47 @@ long int programacao_dinamica(char *s1, char *s2) {
 
 long int guloso(char *s1, char *s2) {
     long int pontuacao = 0;
+    int i = 0, j = 0;
+    int n = strlen(s1);
+    int m = strlen(s2);
 
-    /***********************
-    ***********************
-     Implementar código aqui
-    ************************
-    ***********************/
+    // O loop percorre as sequências enquanto houver bases em ambas
+    while (i < n && j < m) {
+        
+        // Calcula a pontuação das 3 opções possíveis para o passo atual
+        int score_diag = comparacao_de_base_DNA(s1[i], s2[j]) ? 2 : -1;
+        int score_gap_s1 = -2; // Inserir gap em s1 (avança apenas na s2)
+        int score_gap_s2 = -2; // Inserir gap em s2 (avança apenas na s1)
+
+        // Escolha Gulosa: Pegar a opção com a maior pontuação imediata
+        if (score_diag >= score_gap_s1 && score_diag >= score_gap_s2) {
+            // Opção Diagonal é a melhor (ou empata como a melhor)
+            pontuacao += score_diag;
+            i++;
+            j++;
+        } 
+        else if (score_gap_s1 >= score_gap_s2) {
+            // Gap em s1 é a melhor opção local
+            pontuacao += score_gap_s1;
+            j++;
+        } 
+        else {
+            // Gap em s2 é a melhor opção local
+            pontuacao += score_gap_s2;
+            i++;
+        }
+    }
+
+    /* Caso uma sequência acabe antes da outra, as bases restantes 
+       são obrigatoriamente pareadas com lacunas (Gaps) */
+    while (i < n) {
+        pontuacao -= 2;
+        i++;
+    }
+    while (j < m) {
+        pontuacao -= 2;
+        j++;
+    }
 
     /* Esta retorno também é obrigatório e não deve ser retirado*/
     return pontuacao;
