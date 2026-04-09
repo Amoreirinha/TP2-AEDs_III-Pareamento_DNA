@@ -11,9 +11,9 @@ def generate_dna_sequences(size1, size2, filename):
 
 if __name__ == "__main__":
     # Parâmetros da Progressão Aritmética
-    valor_inicial = 1100
-    valor_final = 2000
-    razao = 100
+    valor_inicial = 5
+    valor_final = 5000
+    razao = 5
     
     # range(início, limite_superior, passo) gera a PA automaticamente.
     # Usamos +1 no valor final porque o range não inclui o último número por padrão.
