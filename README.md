@@ -60,4 +60,5 @@
       <b>Data de Entrega:</b> 12/04/2026 às 23h59.
     </p>
   </section>
+  gcc base.c algoritmos.c -o dna
 </div>
